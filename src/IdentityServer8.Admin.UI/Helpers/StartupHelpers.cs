@@ -388,6 +388,8 @@ namespace IdentityServer8.Admin.UI.Helpers
                         })
                     .AddOpenIdConnect(AuthenticationConsts.OidcAuthenticationScheme, options =>
                     {
+                        options.NonceCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                        options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                         options.Authority = adminConfiguration.IdentityServerBaseUrl;
                         options.RequireHttpsMetadata = adminConfiguration.RequireHttpsMetadata;
                         options.ClientId = adminConfiguration.ClientId;
